@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AnimeNox - Streaming Anime Terlengkap dan Terbaru dengan Kualitas HD">
+    <meta name="keywords" content="anime, streaming, nonton anime, anime sub indo, anime terbaru, anime ongoing">
+    <meta name="author" content="Bayu Official">
+    <title>AnimeNox - Streaming Anime</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AnimeNox - Streaming Anime HD">
+    <meta property="og:description" content="Nonton anime terbaru dan terlengkap dengan kualitas HD gratis">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://animenox.netlify.app">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1578632749014-ca77efd052eb?w=1200&h=630&fit=crop">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#667eea">
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        background: #0a0a0a;
+        color: white;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+      
+      #root {
+        min-height: 100vh;
+        position: relative;
+      }
+      
+      .initial-loading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease infinite;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1.2s linear infinite;
+      }
+      
+      .loading-text {
+        color: white;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      
+      .loading-subtext {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+      }
+      
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Snowflakes */
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        color: white;
+        font-size: 1em;
+        animation: snowfall linear infinite;
+        pointer-events: none;
+        user-select: none;
+      }
+      
+      @keyframes snowfall {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+      }
+      
+      /* No JS Fallback */
+      .no-js {
+        text-align: center;
+        padding: 50px 20px;
+        background: #0a0a0a;
+        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .no-js h1 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+      }
+      
+      .no-js p {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <div class="no-js">
+        <h1>🎌 AnimeNox</h1>
+        <p>JavaScript is required to run this application.</p>
+        <p>JavaScript diperlukan untuk menjalankan aplikasi ini.</p>
+        <p>Silakan aktifkan JavaScript untuk melanjutkan.</p>
+      </div>
+    </noscript>
+    
+    <div id="root">
+      <div class="initial-loading" id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">AnimeNox</div>
+        <div class="loading-subtext">Loading magical anime experience...</div>
+      </div>
+    </div>
+    
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
