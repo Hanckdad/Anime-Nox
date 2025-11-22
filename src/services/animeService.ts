@@ -212,4 +212,74 @@ export const animeService = {
         genres: anime.genres || [],
         episodes: [],
         releaseDate: anime.releaseDate || 'Unknown',
-        rating: anime.rating ? anime.rating
+        rating: anime.rating ? anime.rating / 10 : undefined,
+        totalEpisodes: anime.totalEpisodes,
+        currentEpisode: anime.currentEpisode,
+        popularity: anime.popularity
+      }));
+    } catch (error) {
+      console.error('Error fetching anime by genre:', error);
+      return FALLBACK_ANIME.filter(anime => anime.genres.includes(genre));
+    }
+  },
+
+  async getOngoingAnime(): Promise<Anime[]> {
+    try {
+      const response = await fetch(
+        `${API_CONFIG.consumet.baseUrl}${API_CONFIG.consumet.endpoints.advancedSearch}?status=Ongoing`
+      );
+      
+      if (!response.ok) throw new Error('Failed to fetch ongoing anime');
+      
+      const data = await response.json();
+      
+      return data.results.map((anime: any) => ({
+        id: anime.id.toString(),
+        title: anime.title?.romaji || anime.title?.english || anime.title,
+        image: getImageWithFallback(anime.image),
+        description: sanitizeDescription(anime.description || 'No description available'),
+        status: 'ongoing',
+        genres: anime.genres || [],
+        episodes: [],
+        releaseDate: anime.releaseDate || 'Unknown',
+        rating: anime.rating ? anime.rating / 10 : undefined,
+        totalEpisodes: anime.totalEpisodes,
+        currentEpisode: anime.currentEpisode,
+        popularity: anime.popularity
+      }));
+    } catch (error) {
+      console.error('Error fetching ongoing anime:', error);
+      return FALLBACK_ANIME.filter(anime => anime.status === 'ongoing');
+    }
+  },
+
+  async getCompletedAnime(): Promise<Anime[]> {
+    try {
+      const response = await fetch(
+        `${API_CONFIG.consumet.baseUrl}${API_CONFIG.consumet.endpoints.advancedSearch}?status=Completed`
+      );
+      
+      if (!response.ok) throw new Error('Failed to fetch completed anime');
+      
+      const data = await response.json();
+      
+      return data.results.map((anime: any) => ({
+        id: anime.id.toString(),
+        title: anime.title?.romaji || anime.title?.english || anime.title,
+        image: getImageWithFallback(anime.image),
+        description: sanitizeDescription(anime.description || 'No description available'),
+        status: 'completed',
+        genres: anime.genres || [],
+        episodes: [],
+        releaseDate: anime.releaseDate || 'Unknown',
+        rating: anime.rating ? anime.rating / 10 : undefined,
+        totalEpisodes: anime.totalEpisodes,
+        currentEpisode: anime.totalEpisodes,
+        popularity: anime.popularity
+      }));
+    } catch (error) {
+      console.error('Error fetching completed anime:', error);
+      return FALLBACK_ANIME.filter(anime => anime.status === 'completed');
+    }
+  }
+};
