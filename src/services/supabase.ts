@@ -104,4 +104,14 @@ export const userService = {
   async updateSubscriptions(userId: string, subscriptions: string[]) {
     const { error } = await supabase
       .from('users')
-      .update({
+      .update({ subscriptions })
+      .eq('id', userId);
+
+    if (error) {
+      console.error('Error updating subscriptions:', error);
+      return false;
+    }
+    
+    return true;
+  }
+};
