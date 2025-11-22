@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://animenox.netlify.app/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+
+# Crawl delay
+Crawl-delay: 1
+
+# Allow search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
