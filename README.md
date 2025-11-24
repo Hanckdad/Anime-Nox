@@ -1,6 +1,6 @@
 # 🎌AnimeNox Frontend
 
-<img src="https://freeimage.host/i/fK2Whns" alt="Foto" width="300">
+![Anime 16:9](https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?fit=crop&w=1600&q=80)
 
 A modern, aesthetic anime streaming platform built with Next.js, TypeScript, and Supabase. Features beautiful UI with snow effects, real-time anime data, and seamless user experience.
 
